@@ -1,7 +1,7 @@
 <?php
     $userName="Guest";
-    $userPageHref = "login.php";
-    $loginHref = "login.php>登入";
+    $userPageHref = "login.php?location=1";
+    $loginHref = "login.php?location=0>登入";
     session_start();
     if(isset($_SESSION["userName"])){
         $userName =  $_SESSION["userName"];

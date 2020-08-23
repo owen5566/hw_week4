@@ -1,4 +1,5 @@
 <?php
+    $secretPage = $_GET["location"];
     if (isset($_GET["logout"])) {
         session_start();
         unset($_SESSION["userName"]);
@@ -11,7 +12,13 @@
             session_start();
             $_SESSION["userName"]=$_POST["txtUserName"];
             $_SESSION["password"]=$_POST["txtPassword"];
-            header("Location: index.php");
+            //如果是點會員連結導到登入頁的 登入後就導到會員頁
+            if($secretPage==1){
+              header("Location: secret.php");
+            }else{
+              header("Location: index.php");
+            }
+              
         }
     }
 ?>
@@ -21,7 +28,7 @@
 	<title>Lab - Login</title>
 </head>
 <body>
-<form id="form1" name="form1" method="post" action="login.php">
+<form id="form1" name="form1" method="post">
   <table width="300" border="0" align="center" cellpadding="5" cellspacing="0" bgcolor="#F2F2F2">
     <tr>
       <td colspan="2" align="center" bgcolor="#CCCCCC"><font color="#FFFFFF">會員系統 - 登入</font></td>
